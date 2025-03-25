@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap');
+
+:root {
+  --matrix-green: #00ff41;
+  --matrix-dark: #000;
+  --matrix-glow: rgba(0, 255, 65, 0.5);
+}
+
+@layer base {
+  body {
+    background-color: var(--matrix-dark);
+    color: var(--matrix-green);
+    font-family: 'Source Code Pro', monospace;
+  }
+}
+
+@layer components {
+  .terminal {
+    @apply bg-black p-4 rounded-lg min-h-[300px] overflow-y-auto;
+    border: 1px solid var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-glow);
+  }
+
+  .matrix-text {
+    color: var(--matrix-green);
+    text-shadow: 0 0 5px var(--matrix-glow);
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+  }
+
+  .digital-rain {
+    @apply fixed top-0 left-0 w-full h-full pointer-events-none z-0;
+    canvas {
+      @apply w-full h-full;
+    }
+  }
+
+  .command-line {
+    @apply flex items-center gap-2;
+  }
+
+  .command-prompt {
+    @apply font-bold text-[var(--matrix-green)];
+  }
+
+  .terminal-output {
+    @apply my-2 whitespace-pre-wrap;
+  }
+
+  .active-line {
+    @apply bg-opacity-10 bg-[var(--matrix-green)] rounded px-2;
+  }
+
+  .matrix-button {
+    @apply px-4 py-2 border border-[var(--matrix-green)] 
+           bg-transparent text-[var(--matrix-green)]
+           hover:bg-[var(--matrix-green)] hover:text-black
+           transition-all duration-300
+           rounded shadow-[0_0_10px_var(--matrix-glow)];
+  }
+}
+
+.matrix-fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.matrix-glitch {
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 var(--matrix-glow), -0.05em -0.025em 0 var(--matrix-glow);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 var(--matrix-glow), -0.05em -0.025em 0 var(--matrix-glow);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 var(--matrix-glow), 0.025em 0.025em 0 var(--matrix-glow);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 var(--matrix-glow), 0.025em 0.025em 0 var(--matrix-glow);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 var(--matrix-glow), 0.05em 0 0 var(--matrix-glow);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 var(--matrix-glow), 0.05em 0 0 var(--matrix-glow);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 var(--matrix-glow), -0.025em -0.025em 0 var(--matrix-glow);
+  }
+}
+
+/* @keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+} */
