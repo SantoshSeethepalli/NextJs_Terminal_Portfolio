@@ -2,7 +2,7 @@ import "./globals.css"
 import { TerminalProvider } from "@/components/terminal-provider"
 
 export const metadata = {
-  title: "Mendax Terminal Portfolio",
+  title: "Mendax47",
   description: "Interactive terminal portfolio of Satya Santosh Seethepalli"
 }
 
